@@ -16,7 +16,7 @@ def _make_ingest_response(job_id: str = "job-abc-123") -> MagicMock:
     resp = MagicMock()
     resp.status_code = 200
     resp.raise_for_status = MagicMock()
-    resp.json.return_value = {"results": [{"type": "conversation", "jobId": job_id}]}
+    resp.json.return_value = {"items": [{"type": "conversation", "jobId": job_id}]}
     return resp
 
 
