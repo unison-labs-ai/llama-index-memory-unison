@@ -81,9 +81,9 @@ class UnisonBrainClient:
             resp = self._client.post(f"{self._base}/v1/brain/ingest", json=payload)
             resp.raise_for_status()
             data = resp.json()
-            results = data.get("results", [])
-            if results:
-                return results[0].get("jobId")
+            items = data.get("items", [])
+            if items:
+                return items[0].get("jobId")
         except Exception as exc:
             logger.warning("Unison ingest failed (degrading gracefully): %s", exc)
         return None
