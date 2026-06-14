@@ -1,10 +1,26 @@
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/unison-labs-ai/unison-brain/main/assets/brain.svg" alt="Unison Brain" width="180" />
+
 # llama-index-memory-unison
 
-![CI](https://github.com/unison-labs-ai/llama-index-memory-unison/actions/workflows/ci.yml/badge.svg)
+### Long-term agent memory for LlamaIndex — powered by the Unison brain.
 
-**LlamaIndex memory provider backed by the [Unison brain](https://unisonlabs.ai) — persistent, knowledge-graph-powered agent memory.** Drop it in wherever you'd use `ChatMemoryBuffer` to give your agents long-term recall across sessions.
+**Drop in wherever you'd use `ChatMemoryBuffer`.** Agents get persistent,
+knowledge-graph-powered recall across sessions with zero infrastructure changes.
 
-Powered by the Unison brain.
+[![CI](https://github.com/unison-labs-ai/llama-index-memory-unison/actions/workflows/ci.yml/badge.svg)](https://github.com/unison-labs-ai/llama-index-memory-unison/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/llama-index-memory-unison)](https://pypi.org/project/llama-index-memory-unison/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![Stars](https://img.shields.io/github/stars/unison-labs-ai/llama-index-memory-unison?style=social)](https://github.com/unison-labs-ai/llama-index-memory-unison)
+
+[**Install**](#install) • [**Quick start**](#quick-start) • [**Replacing ChatMemoryBuffer**](#replacing-chatmemorybuffer) • [**How it works**](#how-it-works) • [**For agents**](./AGENTS.md)
+
+</div>
+
+---
+
+> **Reading this as an AI agent?** See [`AGENTS.md`](./AGENTS.md) — install, auth, and `UnisonMemory.from_client(session_id=...)` usage in one place.
 
 ## Install
 
@@ -108,6 +124,33 @@ The `release.yml` workflow builds the wheel + sdist and publishes to PyPI automa
 - Docs: https://docs.unisonlabs.ai
 - Unison brain repo: https://github.com/unison-labs-ai/unison-brain
 - LlamaIndex memory docs: https://docs.llamaindex.ai/en/stable/module_guides/storing/chat_stores/
+
+## Contributing & security
+
+Contributions welcome — see [`CONTRIBUTING.md`](./CONTRIBUTING.md). Found a vulnerability? See [`SECURITY.md`](./SECURITY.md) — please report privately, not via a public issue.
+
+## Part of the Unison Labs constellation
+
+**One brain, every agent.** Every repo below reads from _and writes to_ the same [Unison brain](https://unisonlabs.ai) — no per-tool memory silos.
+
+| Repo | What it does |
+|---|---|
+| [unison-brain](https://github.com/unison-labs-ai/unison-brain) | CLI · SDK · MCP server — the core |
+| [claude-unison](https://github.com/unison-labs-ai/claude-unison) | Memory for Claude Code |
+| [cursor-unison](https://github.com/unison-labs-ai/cursor-unison) | Memory for Cursor |
+| [codex-unison](https://github.com/unison-labs-ai/codex-unison) | Memory for OpenAI Codex CLI |
+| [opencode-unison](https://github.com/unison-labs-ai/opencode-unison) | Memory for OpenCode |
+| [openclaw-unison](https://github.com/unison-labs-ai/openclaw-unison) | Memory for OpenClaw |
+| [pipecat-unison](https://github.com/unison-labs-ai/pipecat-unison) | Memory for Pipecat voice agents |
+| [langchain-unison](https://github.com/unison-labs-ai/langchain-unison) | LangChain memory, history & retriever |
+| **[llama-index-memory-unison](https://github.com/unison-labs-ai/llama-index-memory-unison)** | **LlamaIndex memory provider ← you are here** |
+| [unison-ai-sdk](https://github.com/unison-labs-ai/unison-ai-sdk) | Vercel AI SDK memory middleware |
+| [unison-mastra](https://github.com/unison-labs-ai/unison-mastra) | Mastra agent memory provider |
+| [python-sdk](https://github.com/unison-labs-ai/python-sdk) | Python SDK for the brain |
+| [install-mcp](https://github.com/unison-labs-ai/install-mcp) | One-command MCP installer |
+| [unison-fs](https://github.com/unison-labs-ai/unison-fs) | Mount the brain as a filesystem |
+| [backchannel](https://github.com/unison-labs-ai/backchannel) | Async messaging between agents |
+| [Unison-evals](https://github.com/unison-labs-ai/Unison-evals) | Open memory benchmark suite |
 
 ## License
 
