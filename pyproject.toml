@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llama-index-memory-unison"
+version = "0.1.0"
+description = "LlamaIndex memory provider backed by the Unison brain — long-term agent memory via a knowledge graph."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Unison Labs", email = "company@auraqu.com" }]
+requires-python = ">=3.9"
+keywords = ["llama-index", "memory", "ai-agents", "llm", "knowledge-graph", "unison"]
+dependencies = [
+    "llama-index-core>=0.11",
+    "httpx>=0.27",
+]
+
+[project.urls]
+Homepage = "https://unisonlabs.ai"
+Repository = "https://github.com/unison-labs-ai/llama-index-memory-unison"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/llama_index"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/tests",
+    "/LICENSE",
+    "/README.md",
+]
