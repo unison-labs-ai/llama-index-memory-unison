@@ -1,0 +1,48 @@
+name: Release
+
+# Triggered when a version tag is pushed (e.g. v0.1.0).
+# Publishes to PyPI via Trusted Publishing — no PYPI_API_TOKEN secret needed.
+#
+# One-time setup (first release only):
+#   1. Go to https://pypi.org/manage/project/llama-index-memory-unison/settings/publishing/
+#   2. Add a new Trusted Publisher:
+#        Publisher:   GitHub
+#        Owner:       unison-labs-ai
+#        Repository:  llama-index-memory-unison
+#        Workflow:    release.yml
+#        Environment: (leave blank)
+#   3. Push a tag — CI handles the rest.
+#
+# Fallback (token-based): set a PYPI_API_TOKEN repository secret and replace
+# the publish step's `with:` block with `password: ${{ secrets.PYPI_API_TOKEN }}`.
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  id-token: write  # required for PyPI Trusted Publishing
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: pypi  # optional: lock releases behind a GitHub environment approval
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install build
+        run: pip install build
+
+      - name: Build wheel and sdist
+        run: python -m build
+
+      - name: Publish to PyPI (Trusted Publishing)
+        uses: pypa/gh-action-pypi-publish@release/v1
