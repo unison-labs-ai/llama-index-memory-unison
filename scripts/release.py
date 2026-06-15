@@ -14,6 +14,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -45,10 +46,15 @@ if on_pypi(name, version):
     print(f"{name}=={version} is already on PyPI — nothing to do.")
     sys.exit(0)
 
-run(sys.executable, "-m", "pip", "install", "--quiet", "--upgrade", "build", "twine")
+# Build + publish from an isolated venv so we never install into a managed
+# system/Homebrew Python (PEP 668 "externally-managed-environment").
+venv = Path(tempfile.mkdtemp(prefix="unison-release-")) / "venv"
+run(sys.executable, "-m", "venv", str(venv))
+vpy = str(venv / "bin" / "python")
+run(vpy, "-m", "pip", "install", "--quiet", "--upgrade", "pip", "build", "twine")
 shutil.rmtree(ROOT / "dist", ignore_errors=True)
-run(sys.executable, "-m", "build")
-run(sys.executable, "-m", "twine", "upload", *glob.glob(str(ROOT / "dist" / "*")))
+run(vpy, "-m", "build")
+run(vpy, "-m", "twine", "upload", *glob.glob(str(ROOT / "dist" / "*")))
 
 try:
     run("git", "tag", f"v{version}")
