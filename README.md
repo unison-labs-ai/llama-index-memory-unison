@@ -100,23 +100,17 @@ Network errors are caught and logged; they never crash the agent.
 
 ## Releasing
 
-This package uses **PyPI Trusted Publishing** (no API token required in CI).
-
-Before the first release, configure a Trusted Publisher on PyPI:
-
-1. Go to your PyPI project page → Publishing → Add a new publisher.
-2. Set: Publisher = GitHub, Owner = `unison-labs-ai`, Repository = `llama-index-memory-unison`, Workflow = `release.yml`.
-
-Then tag a release:
+Set a PyPI token, then run one command:
 
 ```bash
-git tag v0.1.0
-git push origin v0.1.0
+export TWINE_USERNAME=__token__
+export TWINE_PASSWORD=pypi-...
+python scripts/release.py
 ```
 
-The `release.yml` workflow builds the wheel + sdist and publishes to PyPI automatically.
+Or configure `~/.pypirc` instead of the env vars.
 
-**Fallback:** if you prefer a token, set a `PYPI_API_TOKEN` repository secret and update `release.yml` to pass `password: ${{ secrets.PYPI_API_TOKEN }}` to the publish action.
+The script builds `llama-index-memory-unison`, publishes to PyPI (idempotent — skips if the version is already on PyPI), then tags and pushes `v<version>`.
 
 ## Links
 
