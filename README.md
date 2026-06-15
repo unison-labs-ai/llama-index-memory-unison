@@ -105,7 +105,7 @@ Set a PyPI token, then run one command:
 ```bash
 export TWINE_USERNAME=__token__
 export TWINE_PASSWORD=pypi-...
-python scripts/release.py
+python3 scripts/release.py
 ```
 
 Or configure `~/.pypirc` instead of the env vars.
