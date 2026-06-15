@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "llama-index-memory-unison"
-version = "0.1.0"
+version = "0.1.1"
 description = "LlamaIndex memory provider backed by the Unison brain — long-term agent memory via a knowledge graph."
 readme = "README.md"
 license = { text = "MIT" }
