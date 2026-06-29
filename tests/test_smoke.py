@@ -31,7 +31,7 @@ def _make_recall_response(context_md: str = "## Memory\nYou met Alice last week.
         "weakEvidence": False,
         "hits": [
             {
-                "doc": {"path": "/private/kb/people/alice.md", "title": "Alice"},
+                "doc": {"path": "/private/person/alice.md", "title": "Alice"},
                 "score": 0.85,
                 "highlight": "You met Alice last week.",
             }
